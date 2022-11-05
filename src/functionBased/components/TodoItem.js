@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import styles from './TodoItem.module.css';
@@ -36,13 +36,6 @@ const TodoItem = (props) => {
     editMode.display = 'none';
   }
 
-  useEffect(
-    () => () => {
-      console.log('Cleaning up...');
-    },
-    [],
-  );
-
   return (
     <li className={styles.item}>
       <div onDoubleClick={handleEditing} style={viewMode}>
@@ -51,6 +44,7 @@ const TodoItem = (props) => {
           className={styles.checkbox}
           checked={todo.completed}
           onChange={() => handleChangeProps(todo.id)}
+          required
         />
         <button type="button" onClick={() => deleteTodoProps(todo.id)}>
           <FaTrash style={{ color: 'orangered', fontSize: '16px' }} />
